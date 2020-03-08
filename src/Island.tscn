@@ -1,0 +1,37 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://src/IslandGenerator.gd" type="Script" id=1]
+[ext_resource path="res://src/GroundCube.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/material/GrassMat.tres" type="Material" id=3]
+[ext_resource path="res://assets/material/SandMat.tres" type="Material" id=4]
+
+[sub_resource type="PrismMesh" id=1]
+
+[sub_resource type="PlaneMesh" id=2]
+
+[sub_resource type="SpatialMaterial" id=3]
+albedo_color = Color( 0.345098, 0.8, 1, 1 )
+
+[node name="Island" type="Spatial"]
+
+[node name="IslandGenerator" type="Node" parent="."]
+script = ExtResource( 1 )
+island_parent = NodePath("..")
+ground_object = ExtResource( 2 )
+sand_mat = ExtResource( 4 )
+grass_mat = ExtResource( 3 )
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( -0.803318, 0.307158, -0.51023, 0, 0.856737, 0.515754, 0.59555, 0.414315, -0.688232, -6.36546, 15.4138, -6.95475 )
+current = true
+far = 300.0
+
+[node name="MeshInstance" type="MeshInstance" parent="."]
+visible = false
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="Water" type="MeshInstance" parent="."]
+transform = Transform( 160, 0, 0, 0, 1, 0, 0, 0, 160, 0, 0.1, 0 )
+mesh = SubResource( 2 )
+material/0 = SubResource( 3 )

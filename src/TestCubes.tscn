@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://src/GroundCube.gd" type="Script" id=1]
+[ext_resource path="res://assets/material/GrassMat.tres" type="Material" id=2]
+[ext_resource path="res://assets/material/SandMat.tres" type="Material" id=3]
+
+[sub_resource type="CubeMesh" id=1]
+
+[node name="Spatial" type="Spatial"]
+script = ExtResource( 1 )
+
+[node name="GroundCube" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.501, 0 )
+mesh = SubResource( 1 )
+material/0 = null
+
+[node name="GroundCube3" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 1.64097, -0.501, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 2 )
+
+[node name="GroundCube2" type="MeshInstance" parent="."]
+transform = Transform( 0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -1.40643, -0.501, 0 )
+mesh = SubResource( 1 )
+material/0 = ExtResource( 3 )
